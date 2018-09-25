@@ -8,15 +8,15 @@
     </button>
   </mat-form-field>
 
-  <button mat-raised-button color="primary" (click)="getWeathers()">Search</button>
+  <button mat-raised-button color="primary" (click)="searchWeather()">Search</button>
 
   <div *ngIf="town">
   <mat-list>
-    <mat-list-item>Temp: {{weatherdata.main.temp}}</mat-list-item>
+    <mat-list-item>Temp: {{weatherdata.main['temp']}}</mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item>Atm pressure: {{weatherdata.main.pressure}}</mat-list-item>
+    <mat-list-item>Atm pressure: {{weatherdata.main['pressure']}}</mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item>Humidity: {{weatherdata.main.humidity}}</mat-list-item>
+    <mat-list-item>Humidity: {{weatherdata.main['humidity']}}</mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item>Cloudiness</mat-list-item>
   </mat-list>

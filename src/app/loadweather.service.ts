@@ -7,6 +7,10 @@ import { OpenWeather } from './weather';
 
 import { LogService } from './log.service';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,23 +23,25 @@ export class LoadWeatherService {
   private OpenWeatherUrlId = 'api/weathers';
 
 
-  constructor(private http: HttpClient, private logService: LogService) { }
+  constructor(
+    private http: HttpClient,
+    private logService: LogService) { }
 
   getWeatherById(id: number): Observable<OpenWeather> {
     const url = `${this.OpenWeatherUrlId}/${id}`;
 
     return this.http.get<OpenWeather>(url).pipe(
       tap(_ => this.logService.add(`Load weather with id=${id}`)),
-      catchError(this.handleError<OpenWeather>(`getHero id=${id}`))
+      catchError(this.handleError<OpenWeather>(`getWeather id=${id}`))
     );
   }
 
-  getWeatherByName(name: string): Observable<OpenWeather> {
-    const url = `${this.OpenWeatherUrlName}/?name=${name}`;
+  getWeatherByName(name: string): Observable<OpenWeather[]> {
+    const url = `${this.OpenWeatherUrlName}/name=${name}`;
 
-    return this.http.get<OpenWeather>(url).pipe(
+    return this.http.get<OpenWeather[]>(url).pipe(
       tap(_ => this.logService.add(`Load weather with name=${name}`)),
-      catchError(this.handleError<OpenWeather>(`getHero name=${name}`))
+      catchError(this.handleError<OpenWeather[]>(`getWeather name=${name}`))
     );
   }
 
@@ -47,8 +53,8 @@ export class LoadWeatherService {
     );
   }
 
-  /* GET heroes whose name contains search term */
-  searchHeroes(term: string): Observable<OpenWeather[]> {
+  /* GET weather whose name contains search term */
+  searchWeather(term: string): Observable<OpenWeather[]> {
     if (!term.trim()) {
       // if empty
       return of([]);
@@ -62,6 +68,7 @@ export class LoadWeatherService {
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
+      console.log('error!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
       console.error(error); // log to console instead
       this.logService.add(`${operation} failed: ${error.message}`);
       return of(result as T);

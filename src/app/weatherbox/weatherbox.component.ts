@@ -28,10 +28,13 @@ export class WeatherboxComponent implements OnInit {
   }
 
   getWeathers(): void {
-    this.loadWeatherService.getWeathers()
-      .subscribe(weathers => this.weathers = weathers);
-    this.loadWeatherService.getWeatherByName(this.town)
+    this.loadWeatherService.getWeatherById(2)
       .subscribe(weatherdata => this.weatherdata = weatherdata);
+  }
+
+  searchWeather(): void {
+    this.loadWeatherService.getWeatherByName(this.town)
+      .subscribe(weatherdatas => this.weatherdata = weatherdatas[0]);
   }
 
   ngOnInit() {
