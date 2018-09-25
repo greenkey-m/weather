@@ -1,10 +1,56 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="container">
+  <div class="weatherspa">
+    <h1>
+      {{ title }}
+    </h1>
+
+    <app-weatherbox></app-weatherbox>
+
+    <app-logs></app-logs>
+
+    <!--
+
+    Горгород
+
+    Ниже блоки:
+    температура
+    атм давление
+    влажность
+    облачность
+
+    Блок поиска по городу
+
+  TODO:
+  Сделать автокомплит поиск, используя доступные онлайн базы городов/поселений.
+  http://htmlweb.ru/geo/city_api_example.php
+  https://www.geonames.org/
+  https://www.maxmind.com/en/free-world-cities-database
+  https://habr.com/post/316976/
+  (вот прям надо брать geonames!!!!!)
+  Вот Вам пакет для РНР: http://pear.php.net/manual/en/package.webservices.services-geonames.examples.php
+  Там Вы найдете примеры и с языком, и с городами.
+  Вот пример инфы по городу: http://api.geonames.org/search?q=london&maxRows=10&username=demo
+  Вот то же самое, но на русском: http://api.geonames.org/search?q=london&maxRows=10&username=demo&lang=ru
+  https://toster.ru/q/436515
+  https://developers.google.com/maps/documentation/javascript/places-autocomplete
+
+
+  Пользовательский интерфейс приложения должен быть русифицирован.
+  Способ визуализации температуры воздуха, атмосферного давления и влажности воздуха - на усмотрение разработчика.
+  Облачность следует визуализировать в виде пиктограммы: "солнышко" при почти нулевой облачности, "облака" при густой облачности,
+  с возможными промежуточными стадиями, на усмотрение разработчика.
+  Следует предусмотреть возможность повторного ввода города/страны для того, чтобы запросить погодные условия в другом городе.
+  Следует предусмотреть кнопку обновления, которая запускает процесс повторного запроса погодных условий в текущем введенном городе
+  и их визуализацию. Кнопка должна выводиться только при условии, что ранее был введен город/страна и запрошены погодные условия.
+  При запросе погодных условий через API следует выводить индикатор загрузки.
+
+     -->
+
+  </div>
+
 </div>
+
+
 <h2>Here are some links to help you start: </h2>
 <ul>
   <li>
