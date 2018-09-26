@@ -1,0 +1,128 @@
+[
+  {
+    "coord": {
+      "lon": 73.4,
+      "lat": 55
+    },
+    "weather": [
+      {
+        "id": 800,
+        "main": "Clear",
+        "description": "clear sky",
+        "icon": "01d"
+      }
+    ],
+    "base": "stations",
+    "main": {
+      "temp": 111,
+      "pressure": 1021,
+      "humidity": 63,
+      "temp_min": 289.15,
+      "temp_max": 289.15
+    },
+    "visibility": 10000,
+    "wind": {
+      "speed": 2,
+      "deg": 250
+    },
+    "clouds": {
+      "all": 0
+    },
+    "dt": 1537853400,
+    "sys": {
+      "type": 1,
+      "id": 7289,
+      "message": 0.0022,
+      "country": "RU",
+      "sunrise": 1537837039,
+      "sunset": 1537880263
+    },
+    "id": 1,
+    "name": "Moscow",
+    "cod": 200
+  },
+  {
+    "coord": {
+      "lon": 73.4,
+      "lat": 55
+    },
+    "weather": [
+      {
+        "id": 800,
+        "main": "Clear",
+        "description": "clear sky",
+        "icon": "01d"
+      }
+    ],
+    "base": "stations",
+    "main": {
+      "temp": 222,
+      "pressure": 1021,
+      "humidity": 63,
+      "temp_min": 289.15,
+      "temp_max": 289.15
+    },
+    "visibility": 10000,
+    "wind": {
+      "speed": 2,
+      "deg": 250
+    },
+    "clouds": {
+      "all": 0
+    },
+    "dt": 1537853400,
+    "sys": {
+      "type": 1,
+      "id": 7289,
+      "message": 0.0022,
+      "country": "RU",
+      "sunrise": 1537837039,
+      "sunset": 1537880263
+    },
+    "id": 2,
+    "name": "Omsk",
+    "cod": 200
+  },
+  {
+    "coord": {
+      "lon": 73.4,
+      "lat": 55
+    },
+    "weather": [
+      {
+        "id": 800,
+        "main": "Clear",
+        "description": "clear sky",
+        "icon": "01d"
+      }
+    ],
+    "base": "stations",
+    "main": {
+      "temp": 333,
+      "pressure": 1021,
+      "humidity": 63,
+      "temp_min": 289.15,
+      "temp_max": 289.15
+    },
+    "visibility": 10000,
+    "wind": {
+      "speed": 2,
+      "deg": 250
+    },
+    "clouds": {
+      "all": 0
+    },
+    "dt": 1537853400,
+    "sys": {
+      "type": 1,
+      "id": 7289,
+      "message": 0.0022,
+      "country": "RU",
+      "sunrise": 1537837039,
+      "sunset": 1537880263
+    },
+    "id": 3,
+    "name": "Malo",
+    "cod": 200
+  }
+]

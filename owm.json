@@ -13,7 +13,7 @@
   ],
   "base": "stations",
   "main": {
-    "temp": 289.15,
+    "temp": 111,
     "pressure": 1021,
     "humidity": 63,
     "temp_min": 289.15,
@@ -36,7 +36,7 @@
     "sunrise": 1537837039,
     "sunset": 1537880263
   },
-  "id": 1496153,
-  "name": "Omsk",
+  "id": 1,
+  "name": "Moscow",
   "cod": 200
 }

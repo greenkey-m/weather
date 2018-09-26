@@ -1,25 +1,24 @@
-<h2>{{town | uppercase}}</h2>
-
 <div class="example-container">
   <mat-form-field class="search-town-field">
     <input matInput type="text" placeholder="Town:" [(ngModel)]="town">
-    <button mat-button *ngIf="town" matSuffix mat-icon-button aria-label="Clear" (click)="town=''">
+    <button mat-button *ngIf="town" matSuffix mat-icon-button aria-label="Clear" (click)="clearFields()">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
 
   <button mat-raised-button color="primary" (click)="searchWeather()">Search</button>
 
-  <div *ngIf="town">
-  <mat-list>
-    <mat-list-item>Temp: {{weatherdata.main['temp']}}</mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>Atm pressure: {{weatherdata.main['pressure']}}</mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>Humidity: {{weatherdata.main['humidity']}}</mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>Cloudiness</mat-list-item>
-  </mat-list>
+  <div *ngIf="selected_weather?.name">
+    <h2>{{selected_weather?.name | uppercase}}</h2>
+    <mat-list>
+      <mat-list-item>Temp: {{ selected_weather?.main.temp }}</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>Atm pressure: {{ selected_weather?.main.pressure }}</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>Humidity: {{ selected_weather?.main.humidity }}</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>Cloudiness</mat-list-item>
+    </mat-list>
   </div>
 
 </div>

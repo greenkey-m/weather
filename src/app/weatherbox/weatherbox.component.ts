@@ -1,7 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-
-import {OpenWeather} from '../weather';
-import {LoadWeatherService} from '../loadweather.service';
+import { Component, OnInit } from '@angular/core';
+import { Owmdata } from '../owm';
+import { OwmService } from '../owm.service';
 
 @Component({
   selector: 'app-weatherbox',
@@ -10,35 +9,28 @@ import {LoadWeatherService} from '../loadweather.service';
 })
 export class WeatherboxComponent implements OnInit {
 
-  weathers: OpenWeather[];
+  public town = ''; // selected town
+  public selected_weather: Owmdata;
+  public temp: number;
+  public pressure: number;
+  public humidity: number;
 
-  town = ''; // selected town
-  weatherdata: OpenWeather = {
-    id: 1,
-    main: {
-      temp: 66,
-      pressure: 66,
-      humidity: 66
-    },
-    name: 'Default (delete!)'
-  };
-  // Выбирать из возвращаемого массива, когда name = town!!!!!!!!!!!!!!!!! и присваивать данные в weatherdata
-
-  constructor(private loadWeatherService: LoadWeatherService) {
+  constructor(private _owm: OwmService) {
   }
 
-  getWeathers(): void {
-    this.loadWeatherService.getWeatherById(2)
-      .subscribe(weatherdata => this.weatherdata = weatherdata);
+  clearFields() {
+    this.town = '';
+    this.selected_weather.name = '';
   }
 
-  searchWeather(): void {
-    this.loadWeatherService.getWeatherByName(this.town)
-      .subscribe(weatherdatas => this.weatherdata = weatherdatas[0]);
+  searchWeather() {
+    this._owm.searchRec(this.town).subscribe((data: Owmdata) => {
+      // console.log(data);
+      this.selected_weather = data;
+    });
   }
 
   ngOnInit() {
-    this.getWeathers();
   }
 
 }
