@@ -1,6 +1,6 @@
 <div class="example-container">
   <mat-form-field class="search-town-field">
-    <input matInput type="text" placeholder="Town:" [(ngModel)]="town">
+    <input matInput type="text" placeholder="Town:" [(ngModel)]="town" (oninput)="searchWeather()">
     <button mat-button *ngIf="town" matSuffix mat-icon-button aria-label="Clear" (click)="clearFields()">
       <mat-icon>close</mat-icon>
     </button>
@@ -11,7 +11,11 @@
   <div *ngIf="selected_weather?.name">
     <h2>{{selected_weather?.name | uppercase}}</h2>
     <mat-list>
-      <mat-list-item>Temp: {{ selected_weather?.main.temp }}</mat-list-item>
+      <mat-list-item>Temp:
+        <span *ngIf="(selected_weather.main.temp >= 0)">&nbsp;+&nbsp;</span>
+        <span *ngIf="(selected_weather.main.temp < 0)">&nbsp;-&nbsp;</span>
+        {{ selected_weather?.main.temp }} °С
+      </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item>Atm pressure: {{ selected_weather?.main.pressure }}</mat-list-item>
       <mat-divider></mat-divider>

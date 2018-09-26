@@ -9,7 +9,7 @@ import {catchError, tap} from 'rxjs/operators';
 })
 export class OwmService {
 
-  private owmUrl = 'https://api.openweathermap.org/data/2.5/weather?appid=8a955705d003eae43e86cb1b7ea30019';
+  private owmUrl = 'https://api.openweathermap.org/data/2.5/weather?appid=8a955705d003eae43e86cb1b7ea30019&units=metric';
 
   constructor(private _http: HttpClient) { }
 

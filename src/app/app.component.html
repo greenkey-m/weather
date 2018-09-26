@@ -4,45 +4,38 @@
       {{ title }}
     </h1>
 
+    <div>
+      <span class="example-input-label"> Selected tab index: </span>
+      <mat-form-field>
+        <input matInput type="number" [formControl]="selected">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <button mat-raised-button
+              class="example-add-tab-button"
+              (click)="addTab(selectAfterAdding.checked)">
+        Add new tab
+      </button>
+      <mat-checkbox #selectAfterAdding> Select tab after adding</mat-checkbox>
+    </div>
+
+    <mat-tab-group [selectedIndex]="selected.value"
+                   (selectedIndexChange)="selected.setValue($event)">
+      <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
+        Contents for {{tab}} tab
+
+        <button mat-raised-button
+                class="example-delete-tab-button"
+                [disabled]="tabs.length === 1"
+                (click)="removeTab(index)">
+          Delete Tab
+        </button>
+      </mat-tab>
+    </mat-tab-group>
+
+
     <app-weatherbox></app-weatherbox>
-
-    <!--
-
-    Горгород
-
-    Ниже блоки:
-    температура
-    атм давление
-    влажность
-    облачность
-
-    Блок поиска по городу
-
-  TODO:
-  Сделать автокомплит поиск, используя доступные онлайн базы городов/поселений.
-  http://htmlweb.ru/geo/city_api_example.php
-  https://www.geonames.org/
-  https://www.maxmind.com/en/free-world-cities-database
-  https://habr.com/post/316976/
-  (вот прям надо брать geonames!!!!!)
-  Вот Вам пакет для РНР: http://pear.php.net/manual/en/package.webservices.services-geonames.examples.php
-  Там Вы найдете примеры и с языком, и с городами.
-  Вот пример инфы по городу: http://api.geonames.org/search?q=london&maxRows=10&username=demo
-  Вот то же самое, но на русском: http://api.geonames.org/search?q=london&maxRows=10&username=demo&lang=ru
-  https://toster.ru/q/436515
-  https://developers.google.com/maps/documentation/javascript/places-autocomplete
-
-
-  Пользовательский интерфейс приложения должен быть русифицирован.
-  Способ визуализации температуры воздуха, атмосферного давления и влажности воздуха - на усмотрение разработчика.
-  Облачность следует визуализировать в виде пиктограммы: "солнышко" при почти нулевой облачности, "облака" при густой облачности,
-  с возможными промежуточными стадиями, на усмотрение разработчика.
-  Следует предусмотреть возможность повторного ввода города/страны для того, чтобы запросить погодные условия в другом городе.
-  Следует предусмотреть кнопку обновления, которая запускает процесс повторного запроса погодных условий в текущем введенном городе
-  и их визуализацию. Кнопка должна выводиться только при условии, что ранее был введен город/страна и запрошены погодные условия.
-  При запросе погодных условий через API следует выводить индикатор загрузки.
-
-     -->
 
   </div>
 
