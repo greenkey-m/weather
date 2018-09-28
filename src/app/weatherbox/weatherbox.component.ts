@@ -24,10 +24,20 @@ export class WeatherboxComponent implements OnInit {
   }
 
   searchWeather() {
+    if (this.town === '') { return; }
     this._owm.searchRec(this.town).subscribe((data: Owmdata) => {
       // console.log(data);
       this.selected_weather = data;
+      // Тут небольшой костыль - город может возвращаться только на английском, поэтому подменяем
+      // его на то, что было введено в строке поиска.
+      this.selected_weather.name = this.town;
     });
+  }
+
+  onEnter(event) {
+    if (event.keyCode === 13) {
+      this.searchWeather();
+    }
   }
 
   ngOnInit() {

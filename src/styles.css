@@ -3,3 +3,23 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Roboto', sans-serif; }
+
+button.mat-raised-button {
+  margin: .5rem !important;
+}
+
+.mat-tab-body {
+  padding-top: 1rem;
+}
+
+.mat-button-toggle-group {
+  width: 105px;
+  position: absolute !important;
+  right: 5px;
+  top: 25px;
+}
+
+.mat-button-toggle-checked {
+  background-color: black;
+  color: white;
+}

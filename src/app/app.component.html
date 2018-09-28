@@ -1,41 +1,48 @@
+<ng-progress></ng-progress><ng-progress
+  [positionUsing]="'marginLeft'"
+  [direction]="'leftToRightIncreased'"
+  [color]="'black'"
+  [trickleSpeed]="500"
+  [thick]="true"
+  [ease]="'easeInSine'"
+></ng-progress>
 <div class="container">
   <div class="weatherspa">
     <h1>
-      {{ title }}
+      {{title | translate}}
     </h1>
 
-    <div>
-      <span class="example-input-label"> Selected tab index: </span>
-      <mat-form-field>
-        <input matInput type="number" [formControl]="selected">
-      </mat-form-field>
-    </div>
+    <mat-button-toggle-group color="primary" name="langSwithcer" aria-label="Lanfuage switcher">
+      <mat-button-toggle value="en" (click)="changeLang('en')">EN</mat-button-toggle>
+      <mat-button-toggle value="ru" (click)="changeLang('ru')" checked>RU</mat-button-toggle>
+    </mat-button-toggle-group>
+
 
     <div>
       <button mat-raised-button
               class="example-add-tab-button"
-              (click)="addTab(selectAfterAdding.checked)">
-        Add new tab
+              (click)="addTab()" translate>
+        {{'NEW SEARCH' | translate}}
       </button>
-      <mat-checkbox #selectAfterAdding> Select tab after adding</mat-checkbox>
     </div>
 
     <mat-tab-group [selectedIndex]="selected.value"
-                   (selectedIndexChange)="selected.setValue($event)">
+                   (selectedIndexChange)="selected.setValue($event)"
+                   color='primary' backgroundColor='primary'>
       <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
-        Contents for {{tab}} tab
+
+        <app-weatherbox></app-weatherbox>
 
         <button mat-raised-button
+                color="warn"
                 class="example-delete-tab-button"
                 [disabled]="tabs.length === 1"
                 (click)="removeTab(index)">
-          Delete Tab
+          {{'DELETE' | translate}}
         </button>
+
       </mat-tab>
     </mat-tab-group>
-
-
-    <app-weatherbox></app-weatherbox>
 
   </div>
 

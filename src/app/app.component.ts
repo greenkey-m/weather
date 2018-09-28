@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {MatTabsModule} from '@angular/material/tabs';
+import { FormControl } from '@angular/forms';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -8,17 +8,28 @@ import {MatTabsModule} from '@angular/material/tabs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Weather SPA';
+  public title = 'WEATHER SPA';
+  private default = 'default';
 
-  tabs = ['First', 'Second', 'Third'];
+  tabs = [];
   selected = new FormControl(0);
 
-  addTab(selectAfterAdding: boolean) {
-    this.tabs.push('New');
+  constructor(private translate: TranslateService) {
+    translate.addLangs(['en', 'ru']);
+    translate.setDefaultLang('ru');
+    translate.use('ru');
+    translate.get('WEATHER').subscribe((str: string) => {
+      this.default = str;
+      this.tabs.push(this.default);
+    });
+  }
 
-    if (selectAfterAdding) {
-      this.selected.setValue(this.tabs.length - 1);
-    }
+  changeLang(lang: string) {
+    this.translate.use(lang);
+  }
+
+  addTab() {
+    this.tabs.push(this.default);
   }
 
   removeTab(index: number) {
